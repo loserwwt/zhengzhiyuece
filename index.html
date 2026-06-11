@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>文件下载中心</title>
+    <meta
+      name="description"
+      content="一个简洁的静态文件下载网站，适合直接打开 HTML 或部署到 GitHub Pages。"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="files.js" defer></script>
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div>
+          <p class="eyebrow">Download Center</p>
+          <h1>文件下载中心</h1>
+          <p class="intro">资料、工具和文档统一整理，按需下载。</p>
+        </div>
+        <div class="header-panel" aria-label="文件统计">
+          <span id="file-count">0 个文件</span>
+          <strong id="total-size">0 B</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="toolbar" aria-label="文件筛选">
+        <label class="search-box">
+          <span>搜索</span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="输入文件名或说明"
+            autocomplete="off"
+          />
+        </label>
+
+        <label class="select-box">
+          <span>排序</span>
+          <select id="sort-select">
+            <option value="newest">最近更新</option>
+            <option value="name">文件名 A-Z</option>
+            <option value="size">文件大小</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="list-heading" aria-live="polite">
+        <h2>可下载文件</h2>
+        <p id="updated-at">正在读取文件列表</p>
+      </section>
+
+      <section id="file-list" class="file-list" aria-label="文件列表"></section>
+
+      <section id="empty-state" class="empty-state" hidden>
+        <h2>暂无可下载文件</h2>
+        <p>把文件放入 downloads 文件夹后更新列表即可显示。</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Static download site</span>
+      <span>Ready for GitHub Pages</span>
+    </footer>
+  </body>
+</html>
