@@ -1,4 +1,19 @@
-(function () {
+(async function () {
+  const loadFreshFileIndex = () =>
+    new Promise((resolve) => {
+      window.DOWNLOAD_META = {};
+      window.DOWNLOAD_FILES = [];
+
+      const script = document.createElement("script");
+      script.src = `files.js?v=${Date.now()}`;
+      script.async = false;
+      script.onload = resolve;
+      script.onerror = resolve;
+      document.head.append(script);
+    });
+
+  await loadFreshFileIndex();
+
   const rawFiles = window.DOWNLOAD_FILES;
   const files = Array.isArray(rawFiles) ? rawFiles : rawFiles ? [rawFiles] : [];
   const meta = window.DOWNLOAD_META || {};
